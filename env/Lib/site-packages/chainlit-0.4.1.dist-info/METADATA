@@ -1,0 +1,114 @@
+Metadata-Version: 2.1
+Name: chainlit
+Version: 0.4.1
+Summary: A faster way to build chatbot UIs.
+Home-page: https://github.com/Chainlit/chainlit
+License: Apache-2.0 license
+Keywords: LLM,Agents,gen ai,chat ui,chatbot ui,langchain
+Author: Chainlit
+Requires-Python: >=3.8,<4.0
+Classifier: License :: Other/Proprietary License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: aiofiles (>=23.1.0,<24.0.0)
+Requires-Dist: aiohttp (>=3.8.4,<4.0.0)
+Requires-Dist: asyncer (>=0.0.2,<0.0.3)
+Requires-Dist: auth0-python (>=4.1.1,<5.0.0)
+Requires-Dist: click (>=8.1.3,<9.0.0)
+Requires-Dist: dataclasses_json (>=0.5.7,<0.6.0)
+Requires-Dist: fastapi (>=0.96.0,<0.97.0)
+Requires-Dist: fastapi-socketio (>=0.0.10,<0.0.11)
+Requires-Dist: nest-asyncio (>=1.5.6,<2.0.0)
+Requires-Dist: openai (>=0.27.7,<0.28.0)
+Requires-Dist: pydantic (>=1.10.8,<2.0.0)
+Requires-Dist: python-dotenv (>=1.0.0,<2.0.0)
+Requires-Dist: python-graphql-client (>=0.4.3,<0.5.0)
+Requires-Dist: syncer (>=2.0.3,<3.0.0)
+Requires-Dist: tomli (>=2.0.1,<3.0.0)
+Requires-Dist: uptrace (>=1.18.0,<2.0.0)
+Requires-Dist: uvicorn (>=0.22.0,<0.23.0)
+Requires-Dist: watchfiles (>=0.19.0,<0.20.0)
+Project-URL: Repository, https://github.com/Chainlit/chainlit
+Description-Content-Type: text/markdown
+
+# Welcome to Chainlit 👋
+
+**Build Python LLM apps in minutes ⚡️**
+
+Chainlit lets you create ChatGPT-like UIs on top of any Python code in minutes! Some of the key features include intermediary steps visualisation, element management & display (images, text, carousel, etc.) as well as cloud deployment.
+
+[![](https://dcbadge.vercel.app/api/server/ZThrUxbAYw?style=flat)](https://discord.gg/ZThrUxbAYw)
+[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/chainlit_io.svg?style=social&label=Follow%20%40chainlit_io)](https://twitter.com/chainlit_io)
+[![CI](https://github.com/Chainlit/chainlit/actions/workflows/ci.yaml/badge.svg)](https://github.com/Chainlit/chainlit/actions/workflows/ci.yaml)
+
+https://github.com/Chainlit/chainlit/assets/13104895/e347e52c-35b2-4c35-8a88-f8ac02dd198e
+
+## Installation
+
+Open a terminal and run:
+
+```bash
+$ pip install chainlit
+$ chainlit hello
+```
+
+If this opens the `hello app` in your browser, you're all set!
+
+## 📖 Documentation
+
+Please see [here](https://docs.chainlit.io) for full documentation on:
+
+- Getting started (installation, simple examples)
+- Examples
+- Reference (full API docs)
+
+## 🚀 Quickstart
+
+### 🐍 Pure Python
+
+Create a new file `demo.py` with the following code:
+```python
+import chainlit as cl
+
+
+@cl.on_message  # this function will be called every time a user inputs a message in the UI
+async def main(message: str):
+    # this is an intermediate step
+    await cl.Message(author="Tool 1", content=f"Response from tool1", indent=1).send()
+
+    # send back the final answer
+    await cl.Message(content=f"This is the final answer").send()
+```
+
+Now run it!
+```
+$ chainlit run demo.py -w
+```
+
+<img src="/images/quick-start.png" alt="Quick Start"></img>
+
+### 🔗 With LangChain
+
+Checkout our plug and play [integration](https://docs.chainlit.io/langchain) with LangChain!
+
+## 🛣 Roadmap
+- [ ] New UI elements (spreadsheet, video, carousel...)
+- [ ] Create your own UI elements via component framework
+- [ ] DAG-based chain-of-thought interface
+- [ ] Support more LLMs in the prompt playground
+- [ ] App deployment
+
+Tell us what you would like to see added in Chainlit using the Github issues or on [Discord](https://discord.gg/ZThrUxbAYw).
+
+## 💁 Contributing
+
+As an open-source initiative in a rapidly evolving domain, we welcome contributions, be it through the addition of new features or the improvement of documentation.
+
+For detailed information on how to contribute, see [here](.github/CONTRIBUTING.md).
+
+## License
+Chainlit is open-source and licensed under the [Apache 2.0](LICENSE) license.
+
